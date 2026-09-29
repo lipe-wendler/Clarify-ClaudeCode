@@ -1,6 +1,6 @@
 # Análise consolidada — Portfólio profissional de Felipe Wendler (F.Wendler)
 
-> Documento de trabalho que sustenta o portfólio em PDF (`Portfolio_Felipe_Wendler.pdf`).
+> Documento de trabalho que sustenta o site do portfólio (`docs/index.html`).
 > Data da análise: 29/09/2026 · Status: **v1: rascunho que depende das respostas do briefing (seção 8)**
 
 ---
@@ -55,7 +55,7 @@ métricas de resultado e autorizações de divulgação. Ela é tratada no brief
   multiatividade)
 - **Formação contínua:** Curso de Desenvolvimento com Claude Code (Clarify), em 2026
 
-### 3.2 Identidade visual já existente (aproveitada no PDF)
+### 3.2 Identidade visual já existente (aproveitada no site)
 
 | Elemento | Valor |
 |---|---|
@@ -63,7 +63,7 @@ métricas de resultado e autorizações de divulgação. Ela é tratada no brief
 | Destaque | Amarelo (`#F5C62E`) em "Solving problems." e no traço sob o subtítulo |
 | Neutros | Cinzas em planos geométricos (`#8A8A8A`, `#5A5A5A`) |
 | Grafismo | Círculo amarelo, planos cinza sobrepostos e linhas finas amarelas em curva ("conexões") |
-| Tipografia | Sans geométrica e humanista (no PDF: *Plus Jakarta Sans*) |
+| Tipografia | Sans geométrica e humanista (no site: *Plus Jakarta Sans*) |
 
 ### 3.3 Posicionamento proposto
 
@@ -197,7 +197,7 @@ Pilares, derivados do manifesto:
    cartório.
 5. **Faltam foto, contatos e depoimentos.**
 
-### Decisões tomadas no PDF v1 (revisar após o briefing)
+### Decisões tomadas no site v1 (revisar após o briefing)
 - Os projetos aparecem como **estudos de caso** (contexto, desafio, solução, evidência), sem
   inventar métricas. Onde falta número, a evidência é qualitativa.
 - Sócios, contador e dados financeiros **não aparecem**.
@@ -210,7 +210,7 @@ Pilares, derivados do manifesto:
 ## 8. Briefing: 30 perguntas
 
 > Responda direto neste arquivo (abaixo de cada pergunta) ou no chat. As respostas geram a v2
-> do PDF.
+> do site.
 
 ### A. Identidade e posicionamento
 1. **Título principal:** qual cargo ou título deve abrir o portfólio? Opções: *Software
@@ -277,38 +277,45 @@ Pilares, derivados do manifesto:
 
 ---
 
-## 9. Estrutura do portfólio (PDF v1)
+## 9. Estrutura do portfólio (site v1)
 
-| # | Página | Conteúdo |
+O portfólio é um site de uma página (`docs/index.html`), pensado para recrutadores e avaliadores.
+
+| Seção | Âncora | Conteúdo |
 |---|---|---|
-| 1 | Capa | Marca F.Wendler, manifesto, título e eixos |
-| 2 | Sobre | Bio, três pilares da marca e números-chave |
-| 3 | Competências e método | Stack por grupo e o processo "Entender → Especificar → Construir → Validar → Entregar" |
-| 4 | Case 01: LECTUM | Sistema para cartórios |
-| 5 | Case 02: SaaS Imobiliário e site | Engenharia de qualidade e CI |
-| 6 | Cases 03 e 04: Automação contábil com IA e Restaurante Manager | Automação de processos e concorrência |
-| 7 | Case 05: Engenharia com agentes de IA | Metodologia multiagente |
-| 8 | Trajetória e formação | Linha do tempo |
-| 9 | Contato | Chamada para ação e canais |
+| Hero | `#topo` | Marca F.Wendler, manifesto, eixos e botões para projetos e GitHub |
+| Sobre | `#sobre` | Bio, números-chave e os três pilares da marca |
+| Projetos | `#projetos` | Cinco estudos de caso com filtro por área: LECTUM, SaaS Imobiliário, especificação com vários agentes, fechamento contábil e Restaurante Manager |
+| Método | `#metodo` | As cinco etapas de trabalho e as competências por grupo |
+| Trajetória | `#trajetoria` | Linha do tempo de 2026 no formato de histórico de commits, formação e empresa |
+| Contato | `#contato` | Chamada para ação e link do GitHub |
+
+Características: responsivo (celular e desktop), tema claro e escuro conforme o sistema do visitante,
+navegação por âncoras (dá para enviar um link direto para `#projetos`), acessível por teclado e
+com animação desativada para quem prefere movimento reduzido.
 
 ### Próximos passos
 1. Responder o briefing (seção 8).
 2. Separar os assets: foto, screenshots e logos dos clientes autorizados.
-3. Gerar a v2 do PDF com métricas e contatos. Opcional: versão em inglês e site (GitHub Pages).
-4. Atualizar LinkedIn e README do GitHub com o mesmo posicionamento.
+3. Publicar no GitHub Pages (seção 10) e colocar o link no LinkedIn e no README do GitHub.
+4. Gerar a v2 do site com métricas, contatos e, se fizer sentido, versão em inglês.
 
 ---
 
-## 10. Arquivos e como regenerar o PDF
+## 10. Arquivos e publicação
 
 | Arquivo | Função |
 |---|---|
 | `portfolio/ANALISE_PORTFOLIO.md` | Esta análise e o briefing |
-| `portfolio/Portfolio_Felipe_Wendler.pdf` | Portfólio final, A4 com 9 páginas |
-| `portfolio/src/portfolio.html` | Fonte editável do PDF (textos, cores, layout) |
-| `portfolio/src/fonts/` | Fontes embutidas (Plus Jakarta Sans e JetBrains Mono, licença OFL) |
-| `portfolio/src/build.mjs` | Gera o PDF com o Chromium do Playwright |
+| `docs/index.html` | O site do portfólio: arquivo único, sem build |
+| `docs/.nojekyll` | Faz o GitHub Pages servir os arquivos como estão |
 
-```bash
-node portfolio/src/build.mjs   # requer Node 18+ e o pacote playwright
-```
+**Publicar no GitHub Pages (uma vez):**
+1. No GitHub, abra o repositório `Clarify-ClaudeCode` → **Settings** → **Pages**.
+2. Em **Build and deployment**, escolha **Deploy from a branch**.
+3. Selecione o branch `portifolio` (ou `main`, depois do merge) e a pasta **`/docs`**. Clique em **Save**.
+4. Em cerca de um minuto o site fica disponível em
+   **https://lipe-wendler.github.io/Clarify-ClaudeCode/**.
+
+Para editar, altere `docs/index.html` e faça push: o Pages atualiza sozinho. Para ver localmente,
+basta abrir o arquivo no navegador.
