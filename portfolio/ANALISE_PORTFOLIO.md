@@ -1,6 +1,6 @@
 # Análise consolidada — Portfólio profissional de Felipe Wendler (F.Wendler)
 
-> Documento de trabalho que sustenta o site do portfólio (`docs/index.html`).
+> Documento de trabalho que sustenta o site do portfólio (React + Vite + Tailwind, na raiz do repositório).
 > Data da análise: 29/09/2026 · Status: **v1: rascunho que depende das respostas do briefing (seção 8)**
 
 ---
@@ -277,45 +277,40 @@ Pilares, derivados do manifesto:
 
 ---
 
-## 9. Estrutura do portfólio (site v1)
+## 9. Estrutura do portfólio (site v2: React + Vite + Tailwind)
 
-O portfólio é um site de uma página (`docs/index.html`), pensado para recrutadores e avaliadores.
+O portfólio é um site de uma página em React, pensado primeiro para o celular, com deploy na
+Vercel. O código está na raiz do repositório (ver `README.md`).
 
 | Seção | Âncora | Conteúdo |
 |---|---|---|
-| Hero | `#topo` | Marca F.Wendler, manifesto, eixos e botões para projetos e GitHub |
+| Hero | `#topo` | Manifesto, frase de posicionamento, áreas e botões para projetos, LinkedIn e GitHub |
 | Sobre | `#sobre` | Bio, números-chave e os três pilares da marca |
-| Projetos | `#projetos` | Cinco estudos de caso com filtro por área: LECTUM, SaaS Imobiliário, especificação com vários agentes, fechamento contábil e Restaurante Manager |
+| Projetos | `#projetos` | Estudos de caso com filtro por área: SaaS Notarial, especificação com vários agentes, fechamento contábil automatizado e Restaurante Manager |
 | Método | `#metodo` | As cinco etapas de trabalho e as competências por grupo |
-| Trajetória | `#trajetoria` | Linha do tempo de 2026 no formato de histórico de commits, formação e empresa |
-| Contato | `#contato` | Chamada para ação e link do GitHub |
+| Trajetória | `#trajetoria` | Linha do tempo de 2026 no formato de histórico de commits e formação |
+| Contato | `#contato` | Chamada para ação com LinkedIn e GitHub |
 
-Características: responsivo (celular e desktop), tema claro e escuro conforme o sistema do visitante,
-navegação por âncoras (dá para enviar um link direto para `#projetos`), acessível por teclado e
-com animação desativada para quem prefere movimento reduzido.
+### Decisões da v2 (pedidas pelo Felipe)
+- Stack: React + Vite + Tailwind, com layout mobile first e deploy na Vercel.
+- Botão do LinkedIn (`https://www.linkedin.com/in/felipe-wendler/`) no menu, no hero e no contato.
+- **Portfólio pessoal:** o site não cita as empresas das quais o Felipe é sócio.
+- **SaaS imobiliário removido**, incluindo o site de imobiliária que aparecia junto dele e o
+  número de 233 testes, que vinha desse projeto.
+- **LECTUM renomeado para "SaaS Notarial"** em todo o site.
 
 ### Próximos passos
-1. Responder o briefing (seção 8).
-2. Separar os assets: foto, screenshots e logos dos clientes autorizados.
-3. Publicar no GitHub Pages (seção 10) e colocar o link no LinkedIn e no README do GitHub.
-4. Gerar a v2 do site com métricas, contatos e, se fizer sentido, versão em inglês.
+1. Responder o briefing (seção 8), principalmente contatos, formação, experiências e métricas.
+2. Separar os assets: foto e screenshots autorizados dos projetos.
+3. Fazer o deploy na Vercel (ver `README.md`) e colocar o link no LinkedIn e no GitHub.
 
 ---
 
-## 10. Arquivos e publicação
+## 10. Arquivos
 
 | Arquivo | Função |
 |---|---|
 | `portfolio/ANALISE_PORTFOLIO.md` | Esta análise e o briefing |
-| `docs/index.html` | O site do portfólio: arquivo único, sem build |
-| `docs/.nojekyll` | Faz o GitHub Pages servir os arquivos como estão |
-
-**Publicar no GitHub Pages (uma vez):**
-1. No GitHub, abra o repositório `Clarify-ClaudeCode` → **Settings** → **Pages**.
-2. Em **Build and deployment**, escolha **Deploy from a branch**.
-3. Selecione o branch `portifolio` (ou `main`, depois do merge) e a pasta **`/docs`**. Clique em **Save**.
-4. Em cerca de um minuto o site fica disponível em
-   **https://lipe-wendler.github.io/Clarify-ClaudeCode/**.
-
-Para editar, altere `docs/index.html` e faça push: o Pages atualiza sozinho. Para ver localmente,
-basta abrir o arquivo no navegador.
+| `src/data/profile.js` | Todo o conteúdo do site |
+| `src/components/` | Seções do site |
+| `README.md` | Como rodar, editar e publicar na Vercel |
