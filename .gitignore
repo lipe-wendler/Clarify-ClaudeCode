@@ -1,0 +1,11 @@
+# Dependências e build
+node_modules/
+dist/
+
+# Vercel
+.vercel/
+
+# Sistema e editores
+.DS_Store
+*.log
+.env*.local
