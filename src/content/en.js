@@ -145,7 +145,7 @@ export default {
       { title: 'Multi-agent specification', subtitle: 'Claude and Codex review the same documents; a consolidator separates agreement from conflict. First round: 31 contradictions, 5 ambiguities and 6 open decisions.', meta: 'method' },
       { title: 'AI agent frameworks', subtitle: 'AIOX and Claude Code applied to real projects, with parallel sessions and cross-review.', meta: 'practice' },
       { title: 'Claude Code and MCP', subtitle: 'Anthropic courses: Claude Code 101, Claude Code in Action and Introduction to MCP.', meta: 'study' },
-      { title: 'This portfolio', subtitle: 'React, Vite and Tailwind on top of the F.Wendler Design System.', meta: 'code', href: 'https://github.com/lipe-wendler/Clarify-ClaudeCode' },
+      { title: 'This portfolio', subtitle: 'React, Vite and Tailwind on top of the F.Wendler Design System.', meta: 'code', href: 'https://github.com/lipe-wendler/professional-portfolio' },
     ],
   },
 

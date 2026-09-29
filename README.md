@@ -54,7 +54,7 @@ nos dois idiomas.
 
 ## Deploy na Vercel
 
-1. Acesse [vercel.com/new](https://vercel.com/new) e importe `lipe-wendler/Clarify-ClaudeCode`.
+1. Acesse [vercel.com/new](https://vercel.com/new) e importe `lipe-wendler/professional-portfolio`.
 2. A Vercel detecta o Vite (configuração também em `vercel.json`: build `npm run build`, saída
    `dist`, e reescrita de rotas para `index.html`, necessária para as páginas `/work/...`).
 3. Clique em **Deploy**.
