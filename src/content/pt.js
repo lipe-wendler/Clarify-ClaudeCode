@@ -120,6 +120,7 @@ export default {
     education: [
       { period: 'set/2026', title: 'Claude Code e MCP', org: 'Anthropic', type: 'Formação complementar', points: ['Claude Code 101', 'Claude Code in Action', 'Introduction to MCP'] },
       { period: '2026', title: 'Desenvolvimento com Claude Code', org: 'Clarify', type: 'Formação complementar' },
+      { period: '2023 — 2025', title: 'Engenharia de Software', org: 'Graduação · incompleta', type: 'Graduação', points: ['2 anos cursados, trancado no fim de 2025'] },
       { period: 'nov/2025', title: 'Formação comercial', org: 'Vende-C', type: 'Formação complementar', points: ['Formação Vende-C', 'Fundamentos de Vendas'] },
       { period: 'fev/2021 — dez/2022', title: 'Técnico em Eletromecânica', org: 'SENAI/PR', type: 'Curso técnico' },
     ],

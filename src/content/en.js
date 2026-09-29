@@ -115,6 +115,7 @@ export default {
     education: [
       { period: 'Sep 2026', title: 'Claude Code and MCP', org: 'Anthropic', type: 'Complementary training', points: ['Claude Code 101', 'Claude Code in Action', 'Introduction to MCP'] },
       { period: '2026', title: 'Development with Claude Code', org: 'Clarify', type: 'Complementary training' },
+      { period: '2023 — 2025', title: 'Software Engineering', org: "Bachelor's degree · incomplete", type: "Bachelor's degree", points: ['2 years completed, paused at the end of 2025'] },
       { period: 'Nov 2025', title: 'Sales training', org: 'Vende-C', type: 'Complementary training', points: ['Vende-C sales program', 'Sales Fundamentals'] },
       { period: 'Feb 2021 — Dec 2022', title: 'Electromechanics Technician', org: 'SENAI/PR', type: 'Technical degree' },
     ],
