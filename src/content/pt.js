@@ -115,12 +115,13 @@ export default {
         ],
       },
     ],
+    // Formação: mesmo formato da trajetória, do mais recente para o mais antigo (fonte: CV)
     educationTitle: 'Formação',
     education: [
-      { period: '2021 — 2022', title: 'Técnico em Eletromecânica', org: 'SENAI/PR' },
-      { period: 'set/2026', title: 'Claude Code 101, Claude Code in Action e Introduction to MCP', org: 'Anthropic' },
-      { period: '2026', title: 'Desenvolvimento com Claude Code', org: 'Clarify' },
-      { period: 'nov/2025', title: 'Formação Vende-C e Fundamentos de Vendas', org: 'Vende-C' },
+      { period: 'set/2026', title: 'Claude Code e MCP', org: 'Anthropic', type: 'Formação complementar', points: ['Claude Code 101', 'Claude Code in Action', 'Introduction to MCP'] },
+      { period: '2026', title: 'Desenvolvimento com Claude Code', org: 'Clarify', type: 'Formação complementar' },
+      { period: 'nov/2025', title: 'Formação comercial', org: 'Vende-C', type: 'Formação complementar', points: ['Formação Vende-C', 'Fundamentos de Vendas'] },
+      { period: 'fev/2021 — dez/2022', title: 'Técnico em Eletromecânica', org: 'SENAI/PR', type: 'Curso técnico' },
     ],
   },
 

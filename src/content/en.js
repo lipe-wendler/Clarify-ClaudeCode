@@ -110,12 +110,13 @@ export default {
         ],
       },
     ],
+    // Education: same format as the trajectory, newest first (source: CV)
     educationTitle: 'Education',
     education: [
-      { period: '2021 — 2022', title: 'Electromechanics Technician', org: 'SENAI/PR' },
-      { period: 'Sep 2026', title: 'Claude Code 101, Claude Code in Action and Introduction to MCP', org: 'Anthropic' },
-      { period: '2026', title: 'Development with Claude Code', org: 'Clarify' },
-      { period: 'Nov 2025', title: 'Vende-C sales training and Sales Fundamentals', org: 'Vende-C' },
+      { period: 'Sep 2026', title: 'Claude Code and MCP', org: 'Anthropic', type: 'Complementary training', points: ['Claude Code 101', 'Claude Code in Action', 'Introduction to MCP'] },
+      { period: '2026', title: 'Development with Claude Code', org: 'Clarify', type: 'Complementary training' },
+      { period: 'Nov 2025', title: 'Sales training', org: 'Vende-C', type: 'Complementary training', points: ['Vende-C sales program', 'Sales Fundamentals'] },
+      { period: 'Feb 2021 — Dec 2022', title: 'Electromechanics Technician', org: 'SENAI/PR', type: 'Technical degree' },
     ],
   },
 

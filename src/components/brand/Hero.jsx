@@ -34,7 +34,7 @@ export default function Hero() {
       <div className="container-page relative -mt-16 pb-12 md:mt-0 md:flex md:min-h-[600px] md:items-center md:py-20 lg:min-h-[680px]">
         <div className="max-w-xl">
           <SectionLabel bar>{h.eyebrow}</SectionLabel>
-          <h1 id="hero-title" className="t-display mt-5">
+          <h1 id="hero-title" className="t-hero mt-5">
             {h.manifesto.map((line) => (
               <span key={line} className="block">
                 <Highlight text={line} />
