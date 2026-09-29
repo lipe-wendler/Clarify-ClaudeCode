@@ -31,7 +31,7 @@ métricas de resultado e autorizações de divulgação. Ela é tratada no brief
 | Fonte | O que foi extraído | Confiabilidade |
 |---|---|---|
 | Perfil GitHub `lipe-wendler` (bio e banner do README) | Nome, título "JavaScript & PHP Software Engineer", tagline, identidade visual preto + amarelo | Alta (público) |
-| Repositório `Clarify-ClaudeCode` | Participação no *Curso de Desenvolvimento com Claude Code* da Clarify | Alta |
+| Repositório `professional-portfolio` (antes `Clarify-ClaudeCode`) | Participação no *Curso de Desenvolvimento com Claude Code* da Clarify | Alta |
 | Histórico de sessões do Claude Code (mai–set/2026, cerca de 60 sessões) | Projetos, tarefas técnicas, ferramentas e forma de trabalho | Média-alta: só títulos e resumos, sem acesso ao código |
 | Skills pessoais do Claude (`planilha-despesas`, `planilha-receitas`, `pacote-contador`) | Empresas CodeHigh e KAW, papel de sócio, domínio de contabilidade e Simples Nacional, automação de processos | Alta |
 | Memória persistente do Claude | Nenhuma memória salva foi encontrada neste ambiente | — |
@@ -156,7 +156,7 @@ Pilares, derivados do manifesto:
 - **Lacunas:** qual produto é o monorepo e se pode ser citado.
 
 ### 5.7 Formação: Curso de Desenvolvimento com Claude Code (Clarify)
-- Repositório `Clarify-ClaudeCode`, onde este portfólio foi gerado.
+- Repositório `professional-portfolio` (antes `Clarify-ClaudeCode`), onde este portfólio foi gerado.
 
 ---
 
