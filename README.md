@@ -1,19 +1,19 @@
 # Felipe Wendler · Portfólio
 
-Portfólio pessoal de **Felipe Wendler (F.Wendler)**, engenheiro de software JavaScript & PHP:
-sistemas de gestão, automação de processos e integrações com IA.
+Portfólio pessoal de **Felipe Wendler (F.Wendler)**: sistemas de gestão, automações e integrações
+com IA para problemas reais de negócio.
 
 > Projeto desenvolvido durante o Curso de Desenvolvimento com Claude Code da Clarify.
 
 ## Tecnologias
 
-- [React 19](https://react.dev) + [Vite](https://vite.dev)
+- [React 19](https://react.dev) + [Vite](https://vite.dev) + [React Router](https://reactrouter.com)
 - [Tailwind CSS v4](https://tailwindcss.com) (plugin `@tailwindcss/vite`, sem `tailwind.config.js`)
-- Fontes self-hosted via Fontsource (Plus Jakarta Sans e JetBrains Mono)
+- **Design System F.Wendler**: tokens, fontes (Urbanist, DM Sans, Space Mono) e componentes portados
+  para React em `src/components/ds/`
 
-Layout **mobile first**: os estilos base são os do celular, e os prefixos `sm:`, `md:` e `lg:`
-ajustam para telas maiores. Os diagramas dos projetos usam *container queries* (`@container`)
-para se adaptar à largura do card. O tema claro/escuro segue a configuração do visitante.
+Layout **mobile first**: os estilos base são os do celular; `sm:`, `md:`, `lg:` e `xl:` ampliam para
+telas maiores. Os diagramas usam *container queries*. Tema escuro, o padrão da marca.
 
 ## Rodando localmente
 
@@ -21,39 +21,43 @@ Requer Node.js 20.19 ou superior.
 
 ```bash
 npm install
-npm run dev       # servidor de desenvolvimento em http://localhost:5173
+npm run dev       # desenvolvimento em http://localhost:5173
 npm run build     # build de produção em dist/
-npm run preview   # serve o build de produção localmente
+npm run preview   # serve o build de produção
 ```
 
 ## Estrutura
 
 ```
-index.html                  # HTML base, título e metatags de compartilhamento
-public/favicon.svg          # Ícone da aba
+index.html                       # HTML base e metatags de compartilhamento
+public/images/                   # Imagens da marca (versões larga e recorte mobile)
 src/
-  main.jsx                  # Entrada: fontes, CSS global e <App />
-  App.jsx                   # Ordem das seções da página
-  index.css                 # Tailwind, tokens de cor (tema claro/escuro) e componentes CSS
-  data/profile.js           # TODO o conteúdo: textos, projetos, trajetória e links
-  components/               # Uma seção por arquivo (Nav, Hero, About, Projects...)
-vercel.json                 # Configuração de deploy na Vercel
-portfolio/ANALISE_PORTFOLIO.md  # Análise e briefing que deram origem ao portfólio
+  main.jsx                       # Entrada: CSS, roteador e idioma
+  App.jsx                        # Header, rotas (/ , /work/:slug, 404) e rodapé
+  index.css                      # Tailwind + tokens do DS + escala tipográfica
+  styles/tokens.css              # Tokens do Design System F.Wendler (cores, fontes, espaço)
+  styles/fwendler.css            # Estilos dos componentes do DS (classes fw-*)
+  content/pt.js, content/en.js   # TODOS os textos, em português e inglês
+  content/shared.js              # Links, imagens, ordem e estrutura dos projetos
+  i18n/LanguageProvider.jsx      # Idioma (detecção pelo navegador + seletor PT/EN)
+  components/ds/                 # Componentes do DS: Button, Tag, Tabs, Stepper, Media...
+  components/brand/              # Seções de marca: Hero, About, CTA final
+  components/sections/           # Seções de UI: Proof, Projetos, Método, Capacidades...
+  components/case/               # Capas e diagramas dos projetos
+  pages/                         # Home, página de case e 404
 ```
 
-**Para atualizar o conteúdo** (novo projeto, novo marco, novo link), edite apenas
-`src/data/profile.js`. Os componentes leem esses dados e montam o layout.
+**Para atualizar o conteúdo**, edite `src/content/pt.js` e `src/content/en.js` (mesmo formato).
+Nos títulos, `*palavra*` vira o destaque amarelo; nos parágrafos, `**trecho**` vira negrito.
+Um projeto novo precisa de uma entrada em `projectOrder`/`projectMeta` (`shared.js`) e do texto
+nos dois idiomas.
 
 ## Deploy na Vercel
 
-1. Acesse [vercel.com/new](https://vercel.com/new) e importe o repositório `lipe-wendler/Clarify-ClaudeCode`.
-2. A Vercel detecta o Vite sozinha (as configurações também estão em `vercel.json`):
-   - Build command: `npm run build`
-   - Output directory: `dist`
-3. Clique em **Deploy**. O site fica disponível em `https://<nome-do-projeto>.vercel.app`.
+1. Acesse [vercel.com/new](https://vercel.com/new) e importe `lipe-wendler/Clarify-ClaudeCode`.
+2. A Vercel detecta o Vite (configuração também em `vercel.json`: build `npm run build`, saída
+   `dist`, e reescrita de rotas para `index.html`, necessária para as páginas `/work/...`).
+3. Clique em **Deploy**.
 
-A Vercel publica em produção o branch padrão do repositório. Enquanto o portfólio estiver no
-branch `portifolio`, cada push gera uma URL de preview. Para produção, faça o merge no branch
-padrão ou mude o *Production Branch* em **Settings → Git** do projeto na Vercel.
-
-Opcional: em **Settings → Domains** é possível apontar um domínio próprio.
+A produção usa o branch padrão do repositório; outros branches geram URLs de preview. Para publicar
+o branch `portifolio` em produção, faça o merge ou mude o *Production Branch* em **Settings → Git**.

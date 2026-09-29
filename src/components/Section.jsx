@@ -1,12 +1,8 @@
-// Envelope das seções: espaçamento vertical (menor no celular), divisor
-// inferior e o container com a largura máxima da página.
+// Envelope das seções da camada de UI: espaçamento vertical do DS
+// (space-8 no celular, space-9 no desktop) e o container de 1280px.
 export default function Section({ id, labelledBy, children, className = '' }) {
   return (
-    <section
-      id={id}
-      aria-labelledby={labelledBy}
-      className={`border-b border-line py-16 sm:py-20 lg:py-24 ${className}`}
-    >
+    <section id={id} aria-labelledby={labelledBy} className={`py-16 lg:py-24 ${className}`}>
       <div className="container-page">{children}</div>
     </section>
   )

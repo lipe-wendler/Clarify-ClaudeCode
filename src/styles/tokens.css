@@ -1,0 +1,138 @@
+/*
+ * Tokens do Design System F.Wendler, transcritos de tokens.json (versão 1).
+ *
+ * Dark é o tema padrão da marca e o único ativo no site. Os valores light
+ * ficam em [data-theme="light"] para uso futuro; nada no site aplica esse
+ * atributo hoje.
+ *
+ * Regra do DS: componentes nunca usam hex direto, só estes nomes.
+ */
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("../assets/fonts/Urbanist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../assets/fonts/DMSans-Variable.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../assets/fonts/DMSans-Variable-Italic.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../assets/fonts/SpaceMono-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../assets/fonts/SpaceMono-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Paleta da marca (brand-*) */
+  --brand-yellow: #ffc629;
+  --brand-yellow-deep: #f4c430;
+  --brand-yellow-ink: #8a6500;
+  --brand-black: #0b0b0b;
+  --brand-graphite: #1e1e1e;
+  --brand-stone: #363636;
+  --brand-gray: #6b6b6b;
+  --brand-fog: #a3a3a3;
+  --brand-mist: #d9d9d9;
+  --brand-smoke: #eeeeee;
+  --brand-white: #f5f5f5;
+  --brand-paper: #ffffff;
+
+  /* Semânticos: tema dark (padrão) */
+  --bg: var(--brand-black);              /* fundo da página */
+  --surface: #131313;                    /* cards e painéis */
+  --surface-raised: var(--brand-graphite); /* camada acima de surface, hover */
+  --field: var(--brand-graphite);        /* inputs */
+  --line: var(--brand-stone);            /* divisores e bordas decorativas */
+  --line-strong: var(--brand-gray);      /* contorno de controles (3:1) */
+  --ink: var(--brand-white);             /* texto principal */
+  --ink-muted: var(--brand-fog);         /* texto secundário (4.5:1) */
+  --accent: var(--brand-yellow);         /* preenchimento de destaque */
+  --accent-hover: #ffd452;
+  --on-accent: var(--brand-black);       /* texto sobre o amarelo */
+  --accent-text: var(--brand-yellow);    /* amarelo usado como TEXTO */
+  --accent-soft: #2a2206;                /* fundo tingido atrás de accent-text */
+  --focus: var(--brand-yellow);
+  --success: #5ccb8a;
+  --danger: #ff7a6b;
+
+  /* Tipografia (papéis fixos) */
+  --font-display: "Urbanist", "DM Sans", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Espaço (grade de 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Raios */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Sombras (no dark a profundidade vem das camadas, não de sombra) */
+  --shadow-card: none;
+  --shadow-pop: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 0 4px rgba(255, 198, 41, 0.16);
+
+  /* Tamanhos */
+  --control-sm: 36px;
+  --control-md: 44px;
+  --control-lg: 56px;
+  --header-height: 72px;
+  --container: 1280px;
+
+  color-scheme: dark;
+}
+
+/* Variação light do DS (inativa no site; mantida para uso futuro) */
+[data-theme="light"] {
+  --bg: var(--brand-white);
+  --surface: var(--brand-paper);
+  --surface-raised: var(--brand-smoke);
+  --field: var(--brand-paper);
+  --line: var(--brand-mist);
+  --line-strong: #858585;
+  --ink: #1f1f1f;
+  --ink-muted: var(--brand-gray);
+  --accent: var(--brand-yellow-deep);
+  --accent-hover: #e8b720;
+  --accent-text: var(--brand-yellow-ink);
+  --accent-soft: #fff4cc;
+  --focus: #1f1f1f;
+  --success: #1e7a46;
+  --danger: #c0362c;
+  --shadow-card: 0 1px 2px rgba(15, 15, 15, 0.04), 0 8px 24px rgba(15, 15, 15, 0.06);
+  --shadow-pop: 0 12px 32px rgba(15, 15, 15, 0.12);
+  --shadow-glow: 0 0 0 4px rgba(244, 196, 48, 0.28);
+  color-scheme: light;
+}

@@ -1,0 +1,122 @@
+/*
+ * Estilos dos componentes do Design System F.Wendler (classes fw-*).
+ *
+ * Adaptado de project/components/bundle.css do DS: mesmas classes e valores,
+ * sem as regras de demonstração (body, formulários, header e hero de exemplo,
+ * que o site implementa nas próprias seções). Onde o DS só previa desktop,
+ * há ajustes mobile first marcados com "Mobile first".
+ *
+ * Todo valor vem de um token de tokens.css.
+ */
+
+.fw-hl { color: var(--accent-text); }
+
+:where(.fw-btn, .fw-iconbtn, .fw-tab, .fw-tag, .fw-listrow, .fw-card-link):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Icon: traço 24×24, linha 1.6, pontas arredondadas ---------- */
+.fw-icon { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; display: inline-block; vertical-align: middle; }
+.fw-icon-sm { width: 16px; height: 16px; }
+.fw-icon-lg { width: 24px; height: 24px; }
+
+/* ---------- Button (pill) ---------- */
+.fw-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); height: var(--control-md); padding: 0 var(--space-5); border-radius: var(--radius-pill); border: 1px solid transparent; font: 600 14px/20px var(--font-sans); cursor: pointer; white-space: nowrap; transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease; text-decoration: none; }
+.fw-btn:disabled { opacity: .45; cursor: not-allowed; }
+.fw-btn-sm { height: var(--control-sm); padding: 0 var(--space-4); font-size: 13px; }
+.fw-btn-lg { height: var(--control-lg); padding: 0 var(--space-6); font-size: 16px; }
+.fw-btn-primary { background: var(--accent); color: var(--on-accent); }
+.fw-btn-primary:hover:not(:disabled) { background: var(--accent-hover); box-shadow: var(--shadow-glow); }
+.fw-btn-secondary { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.fw-btn-secondary:hover:not(:disabled) { border-color: var(--ink); }
+.fw-btn-outline { background: transparent; color: var(--ink); border-color: var(--accent); }
+.fw-btn-outline:hover:not(:disabled) { background: var(--accent-soft); }
+.fw-btn-ghost { background: transparent; color: var(--ink); }
+.fw-btn-ghost:hover:not(:disabled) { background: var(--surface-raised); }
+.fw-btn .fw-icon { width: 18px; height: 18px; }
+.fw-btn-arrow { transition: transform .15s ease; }
+.fw-btn:hover:not(:disabled) .fw-btn-arrow { transform: translateX(2px); }
+
+/* ---------- IconButton (circular) ---------- */
+.fw-iconbtn { display: inline-flex; align-items: center; justify-content: center; width: var(--control-md); height: var(--control-md); border-radius: var(--radius-pill); border: 1px solid var(--line-strong); background: transparent; color: var(--ink); cursor: pointer; padding: 0; transition: background-color .15s, border-color .15s, color .15s; text-decoration: none; }
+.fw-iconbtn:hover { border-color: var(--ink); }
+.fw-iconbtn-sm { width: var(--control-sm); height: var(--control-sm); }
+.fw-iconbtn-lg { width: var(--control-lg); height: var(--control-lg); }
+.fw-iconbtn-accent { border-color: var(--accent); color: var(--accent-text); }
+.fw-iconbtn-accent:hover { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.fw-iconbtn[aria-pressed="true"], .fw-iconbtn[aria-expanded="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+/* ---------- SectionLabel (eyebrow) ---------- */
+.fw-eyebrow { display: inline-flex; align-items: center; gap: var(--space-4); font: 400 12px/16px var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-muted); }
+.fw-eyebrow-num { color: var(--accent-text); font-weight: 700; letter-spacing: .04em; }
+.fw-eyebrow-bar { width: 32px; height: 4px; border-radius: var(--radius-pill); background: var(--accent); }
+
+/* ---------- Tag ---------- */
+.fw-tag { display: inline-flex; align-items: center; gap: var(--space-1); height: 32px; padding: 0 var(--space-4); border-radius: var(--radius-pill); border: 1px solid var(--line-strong); background: transparent; color: var(--ink); font: 500 13px/1 var(--font-sans); cursor: default; white-space: nowrap; }
+button.fw-tag { cursor: pointer; }
+button.fw-tag:hover { border-color: var(--ink); }
+.fw-tag-sm { height: 24px; padding: 0 var(--space-3); font-size: 12px; }
+.fw-tag-system { font: 400 11px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.fw-tag[aria-pressed="true"], .fw-tag-selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-text); }
+
+/* ---------- Tabs (segmented) ---------- */
+.fw-tabs { display: inline-flex; gap: var(--space-1); padding: var(--space-1); border-radius: var(--radius-pill); background: var(--surface-raised); border: 1px solid var(--line); }
+.fw-tab { height: 40px; padding: 0 var(--space-5); border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--ink); font: 500 14px/20px var(--font-sans); cursor: pointer; opacity: .8; transition: background-color .15s, color .15s, opacity .15s; }
+.fw-tab:hover { opacity: 1; }
+.fw-tab[aria-selected="true"] { opacity: 1; font-weight: 600; }
+.fw-tabs-accent .fw-tab[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+.fw-tabs-neutral .fw-tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+/* Variante compacta (seletor de idioma no header) */
+.fw-tabs-sm .fw-tab { height: 28px; padding: 0 var(--space-3); font: 400 12px/1 var(--font-mono); letter-spacing: .06em; }
+
+/* ---------- Cards ---------- */
+.fw-card { position: relative; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-card); color: var(--ink); min-width: 0; }
+.fw-card-kicker { font: 400 11px/16px var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-muted); display: flex; align-items: center; gap: var(--space-2); }
+.fw-card-kicker::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+.fw-card-title { margin: 0; font: 700 20px/26px var(--font-display); letter-spacing: -0.01em; }
+.fw-card-body { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.fw-card-icon { color: var(--accent-text); }
+.fw-card-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-top: auto; padding-top: var(--space-3); }
+.fw-card-media { margin: calc(var(--space-5) * -1) calc(var(--space-5) * -1) var(--space-2); overflow: hidden; border-radius: var(--radius-md) var(--radius-md) 0 0; border-bottom: 1px solid var(--line); }
+.fw-card-media > * { width: 100%; height: 100%; display: block; object-fit: cover; }
+.fw-quote-mark { font: 800 64px/44px var(--font-display); color: var(--ink-muted); height: 32px; }
+.fw-quote-text { margin: 0; font: 600 24px/30px var(--font-display); letter-spacing: -0.01em; }
+.fw-quote-by { font: 400 12px/16px var(--font-mono); color: var(--ink-muted); text-align: right; }
+.fw-quote-by::before { content: "— "; }
+
+/* ---------- Media: slot de imagem com placeholder hachurado ---------- */
+.fw-media { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; background: var(--surface-raised); }
+.fw-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.fw-media-empty { display: grid; place-items: center; background-image: repeating-linear-gradient(135deg, transparent 0 11px, var(--line) 11px 12px); }
+.fw-media-empty span { font: 400 11px/16px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); background: var(--surface-raised); padding: var(--space-1) var(--space-2); border-radius: 4px; }
+
+/* ---------- ListRow ---------- */
+.fw-list { display: flex; flex-direction: column; gap: var(--space-2); }
+.fw-listrow { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-3); border-radius: var(--radius-md); color: var(--ink); text-decoration: none; transition: background-color .15s; border: 1px solid transparent; }
+a.fw-listrow:hover { background: var(--surface-raised); }
+.fw-listrow-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.fw-listrow-title { font: 600 14px/20px var(--font-sans); }
+.fw-listrow-sub { font: 400 12px/16px var(--font-sans); color: var(--ink-muted); }
+.fw-listrow .fw-iconbtn { pointer-events: none; flex: none; }
+a.fw-listrow:hover .fw-iconbtn { border-color: var(--accent); }
+
+/* ---------- Stepper ---------- */
+/* Mobile first: vertical no celular; horizontal (como no DS) a partir de 1024px. */
+.fw-stepper { display: grid; gap: var(--space-5); list-style: none; margin: 0; padding: 0; }
+.fw-step { position: relative; display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: var(--space-4); }
+.fw-step > :not(.fw-step-dot) { grid-column: 2; }
+.fw-step-dot { grid-row: 1 / span 4; position: relative; z-index: 1; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font: 700 11px/1 var(--font-mono); border: 1.5px solid var(--line-strong); background: var(--surface); color: var(--ink); }
+.fw-step::before { content: ""; position: absolute; left: 15.25px; top: 32px; bottom: calc(var(--space-5) * -1); width: 1.5px; background: var(--line-strong); }
+.fw-step:last-child::before { display: none; }
+.fw-step-done .fw-step-dot, .fw-step-current .fw-step-dot { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.fw-step-current .fw-step-dot { box-shadow: var(--shadow-glow); }
+.fw-step-title { font: 700 17px/22px var(--font-display); padding-top: 5px; }
+.fw-step-sub { font: 400 13px/18px var(--font-sans); color: var(--ink-muted); }
+@media (min-width: 1024px) {
+  .fw-stepper { grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0; }
+  .fw-step { display: flex; flex-direction: column; gap: var(--space-1); padding-right: var(--space-4); }
+  .fw-step-dot { margin-bottom: var(--space-3); }
+  .fw-step::before { left: 32px; right: 0; top: 16px; bottom: auto; width: auto; height: 1.5px; }
+  .fw-step-title { padding-top: 0; }
+}
