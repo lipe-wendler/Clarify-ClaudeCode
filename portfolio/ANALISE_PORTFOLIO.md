@@ -1,6 +1,6 @@
 # Análise consolidada — Portfólio profissional de Felipe Wendler (F.Wendler)
 
-> Documento de trabalho que sustenta o site do portfólio (React + Vite + Tailwind, na raiz do repositório).
+> Documento de trabalho que sustenta o site do portfólio (React + Vite + Tailwind + Design System F.Wendler, na raiz do repositório).
 > Data da análise: 29/09/2026 · Status: **v1: rascunho que depende das respostas do briefing (seção 8)**
 
 ---
@@ -277,32 +277,35 @@ Pilares, derivados do manifesto:
 
 ---
 
-## 9. Estrutura do portfólio (site v2: React + Vite + Tailwind)
+## 9. Estrutura do portfólio (site v3: mockup + Design System F.Wendler)
 
-O portfólio é um site de uma página em React, pensado primeiro para o celular, com deploy na
-Vercel. O código está na raiz do repositório (ver `README.md`).
+Site em React + Vite + Tailwind v4, mobile first, deploy na Vercel. Os componentes seguem o
+**Design System F.Wendler** (Urbanist, DM Sans, Space Mono; amarelo `#FFC629` e preto `#0B0B0B`;
+tema dark). Princípio: **a marca chama atenção, a interface organiza evidência.**
 
-| Seção | Âncora | Conteúdo |
-|---|---|---|
-| Hero | `#topo` | Manifesto, frase de posicionamento, áreas e botões para projetos, LinkedIn e GitHub |
-| Sobre | `#sobre` | Bio, números-chave e os três pilares da marca |
-| Projetos | `#projetos` | Estudos de caso com filtro por área: SaaS Notarial, especificação com vários agentes, fechamento contábil automatizado e Restaurante Manager |
-| Método | `#metodo` | As cinco etapas de trabalho e as competências por grupo |
-| Trajetória | `#trajetoria` | Linha do tempo de 2026 no formato de histórico de commits e formação |
-| Contato | `#contato` | Chamada para ação com LinkedIn e GitHub |
+| # | Seção | Camada | Conteúdo |
+|---|---|---|---|
+| — | Header | — | Wordmark, navegação, seletor PT/EN e CTA "Vamos conversar" |
+| — | Hero | Marca | Foto + arquitetura, manifesto, cargo, resumo, LinkedIn e GitHub |
+| — | Proof | UI | 4 números comprovados (tempo como dev calculado automaticamente) |
+| 01 | Projetos | UI | SaaS Notarial, Fechamento contábil com IA e Restaurante Manager, cada um com página de case (`/work/:slug`) |
+| 02 | Método | UI | Entender → Estruturar → Construir → Medir → Melhorar |
+| 03 | Capacidades | UI | 4 pilares com tecnologias como evidência |
+| 04 | Experiência | UI | Desenvolvedor (2025–atual), escrevente em cartório (2023–2025) e formação (fonte: CV) |
+| 05 | Sobre | Marca | Foto de viagem, trajetória, idiomas e citação |
+| 06 | Agora | UI | Método multiagente, frameworks de agentes, cursos, este portfólio |
+| 07 | Contato | Marca | LinkedIn (principal) e GitHub |
 
-### Decisões da v2 (pedidas pelo Felipe)
-- Stack: React + Vite + Tailwind, com layout mobile first e deploy na Vercel.
-- Botão do LinkedIn (`https://www.linkedin.com/in/felipe-wendler/`) no menu, no hero e no contato.
-- **Portfólio pessoal:** o site não cita as empresas das quais o Felipe é sócio.
-- **SaaS imobiliário removido**, incluindo o site de imobiliária que aparecia junto dele e o
-  número de 233 testes, que vinha desse projeto.
-- **LECTUM renomeado para "SaaS Notarial"** em todo o site.
+### Decisões da v3
+- Sem download de CV nem e-mail, telefone ou cidade no site. O cartório aparece sem nome.
+- O MVP de minutagem com AI Vision (do CV) entra no case do SaaS Notarial.
+- Só números comprovados; os números do diagrama do Restaurante são marcados como ilustrativos.
+- Idioma detectado pelo navegador, com escolha salva no navegador.
 
 ### Próximos passos
-1. Responder o briefing (seção 8), principalmente contatos, formação, experiências e métricas.
-2. Separar os assets: foto e screenshots autorizados dos projetos.
-3. Fazer o deploy na Vercel (ver `README.md`) e colocar o link no LinkedIn e no GitHub.
+1. Fazer o deploy na Vercel (ver `README.md`) e colocar o link no LinkedIn e no GitHub.
+2. Screenshots reais dos projetos, quando puderem ser mostrados, substituem as capas em código.
+3. Um domínio próprio melhora a pré-visualização do link (a imagem de compartilhamento precisa de URL absoluta).
 
 ---
 
@@ -311,6 +314,7 @@ Vercel. O código está na raiz do repositório (ver `README.md`).
 | Arquivo | Função |
 |---|---|
 | `portfolio/ANALISE_PORTFOLIO.md` | Esta análise e o briefing |
-| `src/data/profile.js` | Todo o conteúdo do site |
-| `src/components/` | Seções do site |
+| `src/content/pt.js`, `src/content/en.js` | Todos os textos, nos dois idiomas |
+| `src/content/shared.js` | Links, imagens, ordem e estrutura dos projetos |
+| `src/components/ds/` | Componentes do Design System F.Wendler portados para React |
 | `README.md` | Como rodar, editar e publicar na Vercel |

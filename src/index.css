@@ -1,180 +1,120 @@
 /*
  * Estilos globais do portfólio.
  *
- * Tailwind CSS v4: a configuração do tema fica aqui mesmo, no bloco @theme,
- * sem tailwind.config.js. As cores são variáveis CSS que mudam conforme o tema
- * do visitante (escuro por padrão, claro quando o sistema pede), e o @theme
- * "inline" expõe essas variáveis como classes: bg-bg, text-fg, text-muted,
- * border-line, bg-accent etc.
+ * Camadas:
+ *  1. tokens.css   → tokens do Design System F.Wendler (cores, fontes, espaço, raios)
+ *  2. fwendler.css → componentes do DS (classes fw-*: botão, tag, card, stepper...)
+ *  3. este arquivo → integração com o Tailwind v4 (classes utilitárias usam os
+ *     mesmos tokens) e a escala tipográfica do DS.
+ *
+ * Mobile first: os estilos base valem para o celular; sm/md/lg/xl ampliam.
  */
 @import "tailwindcss";
+@import "./styles/tokens.css";
+@import "./styles/fwendler.css" layer(components); /* em camada: utilidades do Tailwind (hidden, md:flex...) prevalecem sobre fw-* */
 
-/* ------------------------------------------------------------------
- * 1. Tokens de cor. Identidade F.Wendler: grafite + amarelo.
- *    Tema escuro é o padrão (é o da marca).
- * ------------------------------------------------------------------ */
-:root {
-  --bg: #0e0e10;          /* fundo da página */
-  --surface: #16161a;     /* cards */
-  --surface-2: #1e1e23;   /* blocos dentro de cards */
-  --line: #2b2a2f;        /* bordas e divisores */
-  --fg: #edece8;          /* texto principal */
-  --muted: #9d9ba2;       /* texto secundário */
-  --accent: #f5c62e;      /* amarelo da marca (fundos e formas) */
-  --accent-ink: #f5c62e;  /* amarelo usado em TEXTO (escurece no tema claro) */
-  --on-accent: #16130a;   /* texto sobre o amarelo */
-  --accent-soft: rgb(245 198 46 / 0.12);
-  --plane-1: #8f8e93;     /* planos da arte do hero */
-  --plane-2: #4b4a50;
-  --plane-3: #2a2a2e;
-  color-scheme: dark;
-}
-
-/* Tema claro: segue o sistema do visitante, a menos que data-theme="dark" force o escuro */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --bg: #f6f5f1;
-    --surface: #ffffff;
-    --surface-2: #efede6;
-    --line: #e0ddd3;
-    --fg: #17161a;
-    --muted: #5f5e66;
-    --accent-ink: #8a6a00; /* amarelo escuro para manter contraste em fundo claro */
-    --accent-soft: rgb(245 198 46 / 0.22);
-    --plane-1: #bebcb5;
-    --plane-2: #94928c;
-    --plane-3: #d9d6cd;
-    color-scheme: light;
-  }
-}
-:root[data-theme="light"] {
-  --bg: #f6f5f1;
-  --surface: #ffffff;
-  --surface-2: #efede6;
-  --line: #e0ddd3;
-  --fg: #17161a;
-  --muted: #5f5e66;
-  --accent-ink: #8a6a00;
-  --accent-soft: rgb(245 198 46 / 0.22);
-  --plane-1: #bebcb5;
-  --plane-2: #94928c;
-  --plane-3: #d9d6cd;
-  color-scheme: light;
-}
-
-/* ------------------------------------------------------------------
- * 2. Tema do Tailwind: cores e fontes viram classes utilitárias.
- * ------------------------------------------------------------------ */
+/* Tokens do DS expostos como classes do Tailwind: bg-surface, text-ink,
+   text-ink-muted, border-line, text-accent-text, bg-accent etc. */
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
+  --color-surface-raised: var(--surface-raised);
   --color-line: var(--line);
-  --color-fg: var(--fg);
-  --color-muted: var(--muted);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
   --color-accent: var(--accent);
-  --color-accent-ink: var(--accent-ink);
+  --color-accent-hover: var(--accent-hover);
   --color-on-accent: var(--on-accent);
+  --color-accent-text: var(--accent-text);
   --color-accent-soft: var(--accent-soft);
-  --color-plane-1: var(--plane-1);
-  --color-plane-2: var(--plane-2);
-  --color-plane-3: var(--plane-3);
 
-  --font-sans: "Plus Jakarta Sans Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
 }
 
-/* ------------------------------------------------------------------
- * 3. Base
- * ------------------------------------------------------------------ */
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 4.5rem; /* compensa o menu fixo ao navegar por âncoras */
+    scroll-padding-top: calc(var(--header-height) + 8px); /* âncoras não ficam sob o menu fixo */
     -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-bg text-fg font-sans antialiased;
-    line-height: 1.6;
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 16px/24px var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 {
-    text-wrap: balance;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
+  h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+  ::selection { background: var(--accent); color: var(--on-accent); }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
   }
 }
 
-/* ------------------------------------------------------------------
- * 4. Componentes reutilizados em várias seções
- * ------------------------------------------------------------------ */
 @layer components {
-  /* Largura máxima + margem lateral (mínimo 16px no celular) */
+  /* Largura máxima do DS (1280px) + margem lateral de 16px no celular */
   .container-page {
-    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-10;
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+  }
+  @media (min-width: 640px) { .container-page { padding-inline: var(--space-6); } }
+  @media (min-width: 1024px) { .container-page { padding-inline: var(--space-8); } }
+
+  /* ---- Escala tipográfica do DS (menor no celular, valor do DS a partir de lg) ---- */
+  .t-display { font: 700 44px/48px var(--font-display); letter-spacing: -0.025em; }
+  .t-h1 { font: 700 34px/40px var(--font-display); letter-spacing: -0.02em; }
+  .t-h2 { font: 600 28px/34px var(--font-display); letter-spacing: -0.015em; }
+  .t-h3 { font: 600 22px/28px var(--font-display); letter-spacing: -0.01em; }
+  .t-body-lg { font: 400 17px/26px var(--font-sans); }
+  .t-small { font: 400 14px/20px var(--font-sans); }
+  .t-meta { font: 400 12px/16px var(--font-mono); letter-spacing: 0.02em; }
+  .t-index { font: 700 12px/16px var(--font-mono); letter-spacing: 0.04em; }
+  @media (min-width: 640px) {
+    .t-display { font-size: 56px; line-height: 60px; }
+    .t-h1 { font-size: 42px; line-height: 48px; }
+  }
+  @media (min-width: 1024px) {
+    .t-display { font-size: 64px; line-height: 68px; }
+    .t-h1 { font-size: 48px; line-height: 56px; }
+    .t-h2 { font-size: 32px; line-height: 40px; }
+    .t-h3 { font-size: 24px; line-height: 32px; }
+    .t-body-lg { font-size: 18px; line-height: 28px; }
   }
 
-  /* Rótulo curto acima dos títulos, com o traço amarelo da marca */
-  .eyebrow {
-    @apply flex items-center gap-2.5 font-mono text-[0.8125rem] text-muted;
-  }
-  .eyebrow::before {
-    content: "";
-    @apply h-[3px] w-5 bg-accent;
-  }
-
-  /* Botões */
-  .btn {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-line bg-surface px-5 text-[0.95rem] font-bold transition hover:-translate-y-px hover:bg-surface-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0;
-  }
-  .btn-primary {
-    @apply border-accent bg-accent text-on-accent hover:bg-accent hover:brightness-105;
-  }
-
-  /* Etiquetas (tecnologias, áreas) */
-  .tag {
-    @apply rounded-full border border-line px-2.5 py-1 text-[0.78rem] font-semibold text-muted;
-  }
-  .tag-strong {
-    @apply border-accent/60 bg-accent-soft text-fg;
-  }
-
-  /* Nome de branch do Git, em fonte monoespaçada */
-  .branch {
-    @apply whitespace-nowrap rounded bg-surface-2 px-2 py-0.5 font-mono text-xs text-fg;
-  }
-  .branch::before {
-    content: "⎇ ";
-    color: var(--accent-ink);
-  }
+  /* Números grandes da seção Proof */
+  .t-metric { font: 700 44px/1 var(--font-display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  @media (min-width: 1024px) { .t-metric { font-size: 52px; } }
 }
 
-/* ------------------------------------------------------------------
- * 5. Animações do hero (linhas se desenham e o "sol" sobe).
- *    Desligadas para quem prefere menos movimento.
- * ------------------------------------------------------------------ */
-@keyframes draw-line {
-  from { stroke-dashoffset: 900; }
-  to { stroke-dashoffset: 0; }
+/* Conexões animadas do processo (Stepper com a classe fw-stepper-flow):
+   um tracejado amarelo desliza devagar sobre a linha que liga as etapas.
+   Vertical no celular, horizontal a partir de 1024px. Desligado para quem
+   prefere menos movimento (regra em @layer base). */
+@keyframes fw-flow-y { to { background-position: 0 24px; } }
+@keyframes fw-flow-x { to { background-position: 24px 0; } }
+.fw-stepper-flow .fw-step::before {
+  background-color: var(--line);
+  background-image: linear-gradient(180deg, var(--accent) 0 6px, transparent 6px 24px);
+  background-size: 1.5px 24px;
+  animation: fw-flow-y 1.8s linear infinite;
 }
-@keyframes sun-rise {
-  from { transform: translateY(24px); }
-  to { transform: none; }
-}
-.hero-curve {
-  stroke-dasharray: 900;
-  animation: draw-line 1.6s cubic-bezier(0.3, 0.7, 0.2, 1) both;
-}
-.hero-sun {
-  animation: sun-rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-curve, .hero-sun { animation: none; }
+.fw-stepper-flow .fw-step-dot { border-color: var(--accent); color: var(--accent-text); }
+@media (min-width: 1024px) {
+  .fw-stepper-flow .fw-step::before {
+    background-image: linear-gradient(90deg, var(--accent) 0 6px, transparent 6px 24px);
+    background-size: 24px 1.5px;
+    animation-name: fw-flow-x;
+  }
 }

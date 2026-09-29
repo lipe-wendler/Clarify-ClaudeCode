@@ -1,17 +1,17 @@
-// Ponto de entrada da aplicação: carrega as fontes, o CSS global e monta o <App />.
+// Ponto de entrada: CSS global (tokens e componentes do DS), roteador e idioma.
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-
-// Fontes self-hosted (empacotadas no build, sem depender do Google Fonts)
-import '@fontsource-variable/plus-jakarta-sans'
-import '@fontsource/jetbrains-mono/400.css'
-import '@fontsource/jetbrains-mono/600.css'
-
-import './index.css'
+import { BrowserRouter } from 'react-router'
 import App from './App.jsx'
+import { LanguageProvider } from './i18n/LanguageProvider'
+import './index.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
+    </BrowserRouter>
   </StrictMode>,
 )
